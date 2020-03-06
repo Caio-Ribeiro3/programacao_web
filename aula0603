@@ -1,0 +1,18 @@
+let body   = document.getElementsByTagName('body')[0]
+let input1 = document.createElement('input')
+let input2 = document.createElement('input')
+let button = document.createElement('button')
+let ul = document.createElement('ul')
+button.innerHTML = 'seila'
+button.onclick = ()=>{
+    let a = document.createElement('a')
+    let li = document.createElement('li')
+    a.innerHTML = input1.value
+    a.href = 'https://'+input2.value
+    li.appendChild(a)
+    ul.appendChild(li)
+}
+body.appendChild(input1)
+body.appendChild(input2)
+body.appendChild(button)
+body.appendChild(ul)
