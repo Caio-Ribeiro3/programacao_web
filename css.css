@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css?family=Bellota+Text&display=swap');
+
+h1,h2,h3,h4,h5,p,a,li {
+	font-family: 'Bellota Text', cursive;
+}
+
+h1 {
+	text-align: center;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+main {
+	height: 87vh;
+	display: flex;
+	align-items: center;
+}
+
+a {
+	text-decoration: none;
+	color: #111;
+}
+
+body {
+	background: #2b78e4;
+}
+
+header {
+	height: fit-content;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#logo img {
+	height: 10vh;
+	margin: 2vh 0 0 2vh;
+
+}
+
+nav ul li a {
+	padding: 10px;
+	color: white;
+}
+
+#navbar {
+	width: fit-content;
+	margin-right: 20vw;
+	display: flex;
+	align-items: center;
+}
+
+ul {
+	display: flex;
+	flex-direction: row;
+}
+
+li {
+	list-style: none;
+}
+
+#loginBox {
+	padding: 40px;
+	border-radius: 10px;
+	background: white;
+	width: fit-content;
+	margin: 0 auto;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 1px 1px 20px #2f4f7d
+}
+
+#loginBox form {
+	display: flex;
+	flex-direction: column;
+}
+
+#loginBox form input, #loginBox form button {
+	margin: 20px;
+	border-radius: 5px;
+	padding: 5px;
+	border: solid 1px #2b78e4;
+}
+
+#loginBox form button {
+	background: #2b78e4;
+	color: white;
+}
+
+#loginBox a {
+	color: #2b78e4;
+}
+
+#votarmain {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	margin-top: 50px;
+}
+
+.me {
+	background: white;
+	padding: 40px;
+	border-radius: 10px;
+}
+
+.me img {
+	height: 100px;
+	border-radius: 50%;
+}
+
+.mainHolder {
+	width: 60vw;
+}
+
+.mainHolder h1 {
+	color: white;
+}
+
+.mainVoto {
+	width: 100%;
+	background: white;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 20px;
+}
+
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.header img {
+	height: 70px;
+}
+
+.comentarios img {
+	height: 50px;
+}
+
+.comentarios {
+	display: none;
+	flex-direction: column;
+	padding: 20px;
+}
+
+.comment {
+	padding: 10px;
+	margin: 5px;
+	display: flex;
+	flex-direction: row
+}
+
+.header div:nth-child(1) {
+	text-align: center;
+}
+
+.header div:nth-child(2){
+	display: flex;
+    align-items: center;
+}
+
+.header div:nth-child(2) button {
+	background: transparent;
+	border: none;
+}
+
+.header div:nth-child(4) {
+	display: flex;
+	align-items: center
+}
+
+.header div:nth-child(4) button {
+	padding: 10px;
+	border-radius: 5px;
+	border: solid 1px #2b78e4;
+	background: none;
+}
+
+.status {
+	width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: relative;
+    top: -55px;
+    left: 11px;
+}
+
+.postComment {
+	display: flex;
+    justify-content: space-around;
+}
+
+.postComment textarea {
+	width: 80%;
+	background-color: #eee;
+	border-radius: 10px;
+	background: #eee;
+	border: none;
+	resize: none;
+	padding: 5px;
+}
+
+.postComment button {
+	padding: 10px;
+	color: white;
+	background: blue;
+	border-radius: 5px;
+	border: none;
+	height: fit-content;
+}
+
+.textarea {
+	transition: 0.5s;
+}
+
+.liked {
+	color: green;
+}
+
+.desliked {
+	color: red;
+}
+
+#ajudapopup form {
+	border: solid 1px #111;
+	border-radius: 5px;
+	width: fit-content;
+	margin: 0 auto
+}
+
+#ajudapopup form input, #ajudapopup form button {
+	border: none;
+	border-radius: 5px;
+	background: transparent;
+}
+
+#ajudapopup p {
+	display: none;
+	transition: 0.5s;
+}
+
+#ajudapopup ul {
+	flex-direction: column;
+}
+
+#ajudapopup li {
+	text-align: left;
+	border-bottom: solid 1px #eee;
+}
+
+#ajudapopup {
+	background-color: white;
+    height: fit-content;
+    width: 33vw;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.perfilGitHub img {
+	width: 50px
+}
+
+.perfilGitHub{
+border: solid 1px #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.colapse-menu {
+	display: none;
+	border: none;
+	background-color: transparent;
+
+}
+
+#sobrepopup {
+		background-color: white;
+	    height: fit-content;
+	    width: 33vw;
+	    padding: 20px;
+	    text-align: center;
+	    border-radius: 10px;
+	}
+
+@media( max-width: 500px){
+
+	.me {
+		display: none
+	}
+
+	header {
+		background-color: white
+	}
+
+	#loginBox {
+		width: 100vw;
+		height:75vh;
+		box-shadow: none;
+		justify-content: center;
+		border-radius:0;
+	}
+
+	#loginBox form {
+		width: 90%;
+		justify-content: space-around;
+		height: 40vh;
+		align-items: center;
+	}
+
+	#loginBox form button {
+		width: fit-content;
+	}
+
+	.header {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#sobrepopup {
+		width: 100%;
+		height: 100%
+	}
+
+	#sobrepopup i:nth-child(0) {
+	font-size: 50px;
+    margin: 20px;
+	}
+
+	#ajudapopup {
+		width: 90%;
+		height: 100%
+	}
+
+	#ajudapopup ul {
+		    flex-direction: column;
+	    margin: 0;
+	    height: fit-content;
+	    text-align: left;
+	    justify-content: left;
+	    padding: 0;
+	}
+
+	#ajudapopup ul li {
+		width: 100%;
+	}
+
+	.mainHolder {
+		width: fit-content;
+	}
+
+	.mainVoto {
+		width: auto
+	}
+
+	.votarmain {
+		width: 100vw
+	}
+
+	.header button:last-child {
+		margin-top: 20px
+	}
+
+	.comment {
+		flex-direction: column;
+	}
+
+	#navbar {
+		margin: 20px;
+	}
+
+	nav {
+		display: flex;
+		color: #111;
+		height: 100vh;
+		width: 100%;
+		position: absolute;
+		right: -100vw;
+		top: 0;
+		background: white;
+		transition: right 0.5s
+	}
+
+	ul {
+		flex-direction: column;
+		justify-content: space-between;
+   	 	align-items: center;
+    	width: 100%; 	
+	    height: 20vh;
+	    margin-top: 40vh;
+	}
+
+	.colapse-menu {
+		position: absolute;
+    	right: 16px;
+    	display: block
+	}
+
+	nav ul li a {
+		color: #111
+	}
+
+	.perfilGitHub {
+		margin: 20px 0;
+	}
+}
