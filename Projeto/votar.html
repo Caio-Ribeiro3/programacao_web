@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://kit.fontawesome.com/af211de25a.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="css.css" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="true">
+	</head>
+	<body>
+		<header>
+			<div id="logo">
+				<img src="https://s3.amazonaws.com/bucket-gw-cni-static-cms-si/portaldaindustria/noticias/media/16_9/fieb_rE14z6a.jpg" />
+			</div>
+			<div id="navbar">
+				<nav>
+					<ul>
+						<li><a href="index.html">Início</a></li>
+						<li><a onClick="getAjuda()" href="#">Ajuda</a></li>
+						<li><a onClick="getSobre()" href="#">Sobre</a></li>
+					</ul>
+				</nav>
+				<button onClick="showmenu()" class="colapse-menu"><i class="fas fa-bars"></i></button>
+			</div>
+		</header>
+		<main id="votarmain">
+				<div class="me">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRzgd8f_uzIakWYJ-SbRh_OUDUUMRGp6XrIo8ilKyo4XgsxSza8" />
+					<h3>Bem vindo, aluno</h3>
+				</div>
+				<div class="mainHolder">
+					<h1>Boca de urna</h1>
+					<div class="votarmain">
+					</div>
+				</div>
+		</main>
+	</body>
+	<script>
+		function showmenu(){
+			if(document.getElementsByTagName('nav')[0].style.right != '0px'){
+				document.getElementsByTagName('nav')[0].style.right = '0px'
+				document.getElementsByTagName('nav')[0].style.width = '100vw'
+				document.getElementsByTagName('nav')[0].children[0].style.display = 'flex'
+			}else{
+				document.getElementsByTagName('nav')[0].style.right = '-100vw'
+				document.getElementsByTagName('nav')[0].style.width = '0'
+				document.getElementsByTagName('nav')[0].children[0].style.display = 'none'
+			}
+		}
+
+		function mostrar(index){
+			let header = document.getElementsByClassName('header')
+			if(document.getElementsByClassName('comentarios')[index].style.display != 'flex'){
+				document.getElementsByClassName('comentarios')[index].style.display = 'flex'
+				document.getElementsByClassName('comentarios')[index].style.height = 'fit-content' 
+				header[index].children[3].children[0].innerHTML = 'Esconder Comentários'
+			}else{
+				document.getElementsByClassName('comentarios')[index].style.display = 'none'
+				document.getElementsByClassName('comentarios')[index].style.height = '0' 
+				header[index].children[3].children[0].innerHTML = 'Mostrar Comentários'
+			}
+		}
+		function changeColor(who,index){
+			let header = document.getElementsByClassName('header')
+			if(header[index].children[1].children[who+1].vote == false){
+				header[index].children[1].children[Number(who+1)].className +=  who == -1 ? ' liked' : ' desliked'
+				header[index].children[1].children[who+1].vote = true
+				header[index].children[1].children[who+1].nextElementSibling.innerHTML = Number(header[index].children[1].children[who+1].nextElementSibling.innerHTML)+1
+				if(header[index].children[1].children[who*-1+1].vote == true ) {
+					console.log('aqui')
+					header[index].children[1].children[who*-1+1].vote = false
+					header[index].children[1].children[who*-1+1].nextElementSibling.innerHTML = Number(header[index].children[1].children[who*-1+1].nextElementSibling.innerHTML-1)
+					header[index].children[1].children[Number(who*-1+1)].className =  who == 1 ? ' like' : ' deslike'
+				}
+			}else{
+				header[index].children[1].children[who+1].vote = false
+				header[index].children[1].children[who*-1+2].vote = false
+				header[index].children[1].children[who+1].nextElementSibling.innerHTML = Number(header[index].children[1].children[who+1].nextElementSibling.innerHTML)-1
+				header[index].children[1].children[Number(who+1)].className =  who == -1 ? ' like' : ' deslike'
+			}
+			
+			
+		}
+		let comentarios = document.getElementsByClassName('comentarios')
+		for(let i = 0 ; i<Math.floor(Math.random()*50); i++){
+			let componenteVoto = document.createElement('div')
+			componenteVoto.className = 'mainVoto'
+			componenteVoto.id = document.getElementsByClassName('mainVoto').length
+			let header = document.createElement('div')
+			header.className = 'header'
+				let headerDiv = document.createElement('div')
+				let name = document.createElement('h3')
+				name.innerHTML = 'Professor'+componenteVoto.id
+				let img = document.createElement('img')
+				img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRzgd8f_uzIakWYJ-SbRh_OUDUUMRGp6XrIo8ilKyo4XgsxSza8"
+				img.onclick = ()=>{
+					console.log(document.getElementsByTagName('body')[0])
+					let background = document.createElement('div')
+					background.style.width = '100vw'
+					background.style.height = '100vh'
+					background.style.backgroundColor = 'black'
+					background.style.opacity = '0.5'
+					background.style.position = 'fixed'
+					background.style.top = '0'
+					background.style.display = 'flex'
+					background.style.justifyContent = 'center'
+					background.style.alignItems = 'center'
+					let background2 = document.createElement('div')
+					background2.style.width = '100vw'
+					background2.style.height = '100vh'
+					background2.style.backgroundColor = 'transparent'
+					background2.style.position = 'fixed'
+					background2.style.top = '0'
+					background2.style.display = 'flex'
+					background2.style.justifyContent = 'center'
+					background2.style.alignItems = 'center'
+					let content = document.createElement('div')
+					content.style.backgroundColor = 'white'
+					content.style.height = 'fit-content'
+					content.style.width = '33vw'
+					content.style.padding = '20px'
+					content.style.textAlign = 'center'
+					content.style.borderRadius = '10px'
+					content.id = 'popup'
+						let title = document.createElement('h3')
+						title.innerHTML = 'Informações do professor'+componenteVoto.id
+						let imgprof = document.createElement('img')
+						imgprof.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRzgd8f_uzIakWYJ-SbRh_OUDUUMRGp6XrIo8ilKyo4XgsxSza8"
+						let bio = document.createElement('p')
+						bio.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus nibh sit amet pharetra ultrices. Pellentesque tristique urna at ultricies lobortis. Nam et viverra mauris. Morbi in venenatis purus. Nulla pretium sem laoreet nisi consectetur, ac suscipit urna congue. Curabitur cursus eros ac porta aliquam. Pellentesque fringilla leo in fringilla efficitur. Aenean elit elit, lacinia sed consequat ut, mattis ac mauris.'
+						content.appendChild(title)
+						content.appendChild(imgprof)
+						content.appendChild(bio)
+					let button = document.createElement('button')
+						let i = document.createElement('i')
+						i.className = "fas fa-times"
+						button.appendChild(i)
+						button.style.position = 'absolute'
+						button.style.top = '0'
+						button.style.right = '0'
+						button.style.margin = '50px'
+						button.style.border = 'none'
+						button.style.background = 'white'
+						button.onclick = ()=>{
+							background.remove()
+							background2.remove()
+							document.getElementsByTagName('body')[0].style.overflow = 'auto'
+						}
+						background2.appendChild(button)
+					background2.appendChild(content)
+					document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+					document.getElementsByTagName('body')[0].appendChild(background)
+					document.getElementsByTagName('body')[0].appendChild(background2)
+				}
+				headerDiv.appendChild(img)
+				headerDiv.appendChild(name)
+				header.appendChild(headerDiv)
+			let divHeaderMain = document.createElement('div')
+				let button = document.createElement('button')
+					let i = document.createElement('i')
+					i.className = "fas fa-thumbs-up"
+					button.appendChild(i)
+					button.className = 'like'
+					button.vote = false
+					button.addEventListener('click', ()=>{changeColor(-1,componenteVoto.id)})
+					let p = document.createElement('p')
+					p.innerHTML = Math.floor(Math.random()*1000)
+				divHeaderMain.appendChild(button)
+				divHeaderMain.appendChild(p)
+				let button2 = document.createElement('button')
+					let i2 = document.createElement('i')
+					i2.className = "fas fa-thumbs-down"
+					button2.appendChild(i2)
+					button2.className = 'deslike'
+					button2.vote = false
+					button2.addEventListener('click', ()=>{changeColor(1,componenteVoto.id)})
+					let p2 = document.createElement('p')
+					p2.innerHTML = Math.floor(Math.random()*1000)
+				divHeaderMain.appendChild(button2)
+				divHeaderMain.appendChild(p2)
+			let divStar = document.createElement('div')
+				let set = []
+				for(let y = 0; y<Math.floor(Math.random()*6); y++){
+					set[y] = document.createElement('i')
+					set[y].className = "fas fa-star"
+					set[y].style.color = 'yellow'
+					divStar.appendChild(set[y])
+				}
+
+			let divSecondary = document.createElement('div')
+				let buttonShow = document.createElement('button')
+				buttonShow.innerHTML = 'Mostrar comentários'
+				buttonShow.addEventListener('click',()=>{mostrar(componenteVoto.id)})
+				divSecondary.appendChild(buttonShow)
+			let comentarios = document.createElement('div')
+				comentarios.className = 'comentarios'
+			let hr = document.createElement('hr')
+			hr.style.width = '100%'
+			let form = document.createElement('form')
+			form.className = 'postComment'
+			let textarea = document.createElement('textarea')
+			textarea.className = 'textarea'
+			textarea.onclick = ()=>{
+				if(textarea.style.height != '200px'){
+					textarea.style.height = '200px'
+				}else{
+					textarea.style.height = '30px'
+				}
+			}
+			let enviar = document.createElement('button')
+			form.appendChild(textarea)
+			enviar.innerHTML = 'Enviar'
+			enviar.type = 'button'
+			let anonimo = document.createElement('input')
+			anonimo.type = "checkbox"
+			form.appendChild(anonimo)
+			form.appendChild(enviar)
+			componenteVoto.appendChild(header)
+			header.appendChild(divHeaderMain)
+			header.appendChild(divStar)
+			header.appendChild(divSecondary)
+			componenteVoto.appendChild(comentarios)
+			comentarios.appendChild(form)
+			comentarios.appendChild(hr)
+			document.getElementsByClassName('votarmain')[0].appendChild(componenteVoto)
+		}
+		for(let x = 0; x<comentarios.length; x++){
+			for(let i = 0 ; i< (Math.floor(Math.random()*20)) ; i++){
+				let divHolder = document.createElement('div')
+				divHolder.className = 'comment'
+				let divImg = document.createElement('div')
+				divImg.className = 'divimg'
+				let img = document.createElement('img')
+				img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRzgd8f_uzIakWYJ-SbRh_OUDUUMRGp6XrIo8ilKyo4XgsxSza8"
+				divImg.appendChild(img)
+				img.className = 'divimgimg'
+				let divComment = document.createElement('div')
+				divComment.className = 'divcomment'
+				let color = document.createElement('div')
+				color.className = 'status'
+				color.style.backgroundColor = getColor()
+				divImg.appendChild(color)
+				let p = document.createElement('p')
+				p.innerHTML = 'aluno'+Math.floor(Math.random()*10000000000000)+' escreveu: '
+				p.style.margin = '5px'
+				divImg.appendChild(p)
+				comentarios[x].appendChild(divHolder)
+				divHolder.appendChild(divImg)
+				let text = document.createElement('p')
+				text.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus nibh sit amet pharetra ultrices. Pellentesque tristique urna at ultricies lobortis. Nam et viverra mauris. Morbi in venenatis purus. Nulla pretium sem laoreet nisi consectetur, ac suscipit urna congue. Curabitur cursus eros ac porta aliquam. Pellentesque fringilla leo in fringilla efficitur. Aenean elit elit, lacinia sed consequat ut, mattis ac mauris.'
+				divComment.appendChild(text)
+				divComment.style.backgroundColor = '#eee'
+				divComment.style.padding = '20px'
+				divComment.style.borderRadius = '10px'
+				divHolder.appendChild(divComment)
+			}
+		}
+
+		function getColor(){
+			let result = Math.floor(Math.random()*2)
+			if(result == 1 ){
+				return 'red'
+			}
+			return 'green'
+		}
+
+		function getAjuda(){
+			let background = document.createElement('div')
+					background.style.width = '100vw'
+					background.style.height = '100vh'
+					background.style.backgroundColor = 'black'
+					background.style.opacity = '0.5'
+					background.style.position = 'fixed'
+					background.style.top = '0'
+					background.style.display = 'flex'
+					background.style.justifyContent = 'center'
+					background.style.alignItems = 'center'
+					let background2 = document.createElement('div')
+					background2.style.width = '100vw'
+					background2.style.height = '100vh'
+					background2.style.backgroundColor = 'transparent'
+					background2.style.position = 'fixed'
+					background2.style.top = '0'
+					background2.style.display = 'flex'
+					background2.style.justifyContent = 'center'
+					background2.style.alignItems = 'center'
+					let content = document.createElement('div')
+					content.id = "ajudapopup"
+					let button = document.createElement('button')
+						let i = document.createElement('i')
+						i.className = "fas fa-times"
+						button.appendChild(i)
+						button.style.margin = '20px 0 0 90%'
+						button.style.border = 'none'
+						button.style.background = 'white'
+						button.onclick = ()=>{
+							background.remove()
+							background2.remove()
+							document.getElementsByTagName('body')[0].style.overflow = 'auto'
+						}
+					content.appendChild(button)
+					background2.appendChild(content)
+					let title = document.createElement('h1')
+					title.innerHTML = 'Ajuda'
+					background2.appendChild(title)
+					let divum = document.createElement('div')
+						let form = document.createElement('form')
+						let buttoninput = document.createElement('button')
+						buttoninput.innerHTML = 'Buscar'
+						let input = document.createElement('input')
+						form.appendChild(input)
+						form.appendChild(buttoninput)
+						divum.appendChild(form)
+					let div2 = document.createElement('div')
+					let ul = document.createElement('ul')
+					let set = []
+					for(let i =0 ; i<4 ; i++ ){
+						let seila = ['Recuperar senha.','Como faço pra votar.', 'Esdonder coméntarios.', 'Entrar em contato com os desenvolvedores.']
+						set[i] = document.createElement('li')
+						let h4 = document.createElement('h4')
+						let item = document.createElement('i')
+						item.className = "fas fa-caret-up"
+						set[i].appendChild(item)
+						h4.innerHTML = seila[i]
+						let p = document.createElement('p')
+						p.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus nibh sit amet pharetra ultrices. Pellentesque tristique urna at ultricies lobortis. Nam et viverra mauris. Morbi in venenatis purus. Nulla pretium sem laoreet nisi consectetur, ac suscipit urna congue. Curabitur cursus eros ac porta aliquam. Pellentesque fringilla leo in fringilla efficitur. Aenean elit elit, lacinia sed consequat ut, mattis ac mauris.'
+						set[i].appendChild(h4)
+						set[i].onclick = ()=>{
+							if(p.style.display != 'block'){
+								p.style.display = 'block'
+								item.style.transform = 'rotate(180deg)'
+							}else{
+								p.style.display = 'none'
+								item.style.transform = 'rotate(0deg)'
+							}
+						}
+						set[i].appendChild(p)
+						ul.appendChild(set[i])
+					}
+					div2.appendChild(ul)
+					content.appendChild(title)
+					content.appendChild(divum)
+					content.appendChild(div2)
+					document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+					document.getElementsByTagName('body')[0].appendChild(background)
+					document.getElementsByTagName('body')[0].appendChild(background2)
+					showmenu()
+		}
+
+		function getSobre(){
+			let background = document.createElement('div')
+					background.style.width = '100vw'
+					background.style.height = '100vh'
+					background.style.backgroundColor = 'black'
+					background.style.opacity = '0.5'
+					background.style.position = 'fixed'
+					background.style.top = '0'
+					background.style.display = 'flex'
+					background.style.justifyContent = 'center'
+					background.style.alignItems = 'center'
+					let background2 = document.createElement('div')
+					background2.style.width = '100vw'
+					background2.style.height = '100vh'
+					background2.style.backgroundColor = 'transparent'
+					background2.style.position = 'fixed'
+					background2.style.top = '0'
+					background2.style.display = 'flex'
+					background2.style.justifyContent = 'center'
+					background2.style.alignItems = 'center'
+					let content = document.createElement('div')
+					content.id = "sobrepopup"
+					let button = document.createElement('button')
+						let i = document.createElement('i')
+						i.className = "fas fa-times"
+						button.appendChild(i)
+						button.style.margin = '20px 0 0 90%'	
+						button.style.border = 'none'
+						button.style.background = 'white'
+						button.onclick = ()=>{
+							background.remove()
+							background2.remove()
+							document.getElementsByTagName('body')[0].style.overflow = 'auto'
+						}
+					content.appendChild(button)
+					background2.appendChild(content)
+					let title = document.createElement('h1')
+					title.innerHTML = 'Sobre'
+					background2.appendChild(title)
+					let divum = document.createElement('div')
+						let idois = document.createElement('i')
+						idois.className ="fas fa-desktop"
+						divum.appendChild(idois)
+					let div2 = document.createElement('div')
+					let ul = document.createElement('ul')
+					async function seila(url){
+						let contador = 0
+							fetch(url).then(res=>res.json()).then(data=>{
+								console.log(data)
+								let a = document.createElement('a')
+								a.href = data.html_url
+								a.target = '_blank'
+								let div = document.createElement('div')
+								let h4 = document.createElement('h4')
+								h4.innerHTML = data.login
+								let perfil = document.createElement('img')
+								perfil.src = data.avatar_url
+								let bio = document.createElement('p')
+								bio.innerHTML = data.bio
+								div.className = 'perfilGitHub'
+								div.appendChild(perfil)
+								div.appendChild(h4)
+								div.appendChild(bio)
+								a.appendChild(div)
+								content.appendChild(a)
+								 contador ++
+							}).catch(e=>console.log(e))
+					}
+
+					let url = ['https://api.github.com/users/Caio-Ribeiro3', 'https://api.github.com/users/Drolref', 'https://api.github.com/users/charlessouza73067']
+					seila(url[0])
+					seila(url[1])
+					seila(url[2])
+					content.appendChild(title)
+					content.appendChild(divum)
+					content.appendChild(div2)
+					document.getElementsByTagName('body')[0].style.overflow = 'hidden'
+					document.getElementsByTagName('body')[0].appendChild(background)
+					document.getElementsByTagName('body')[0].appendChild(background2)
+					showmenu()
+		}
+	</script>
+</html>
